@@ -26,7 +26,7 @@ class _SignupSupplierState extends State<SignupSupplier> {
   final GlobalKey<ScaffoldMessengerState> _scaffoldKey =
       GlobalKey<ScaffoldMessengerState>();
   bool visiblePassword = false;
-  CollectionReference users = FirebaseFirestore.instance.collection('users');
+  CollectionReference suppliers = FirebaseFirestore.instance.collection('Suppliers');
 
   void signUp() async {
     if (_formKey.currentState!.validate()) {
@@ -40,7 +40,7 @@ class _SignupSupplierState extends State<SignupSupplier> {
               .whenComplete(() => AuthRepo.sendVerificationEmail());
           _uid = AuthRepo.uid;
 
-          await users.doc(_uid).set({
+          await suppliers.doc(_uid).set({
             'name': name,
             'email': email,
             'phone': '',

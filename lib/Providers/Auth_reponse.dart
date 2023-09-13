@@ -6,6 +6,10 @@ class AuthRepo {
     await auth.createUserWithEmailAndPassword(email: email, password: password);
   }
 
+  static Future<void> logOut()async {
+    await FirebaseAuth.instance.signOut();
+  }
+
   static Future<void> signInWithEmailAndPassword(email, password) async {
     final auth = FirebaseAuth.instance;
     await auth.signInWithEmailAndPassword(email: email, password: password);

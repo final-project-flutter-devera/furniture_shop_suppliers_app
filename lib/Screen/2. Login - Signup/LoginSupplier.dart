@@ -5,8 +5,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:furniture_shop/Providers/Auth_reponse.dart';
 import 'package:furniture_shop/Widgets/CheckValidation.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../Constants/Colors.dart';
 import '../../Widgets/MyMessageHandler.dart';
+import 'Forgot_Pass.dart';
 
 class LoginSupplier extends StatefulWidget {
   const LoginSupplier({super.key});
@@ -24,6 +26,7 @@ class _LoginSupplierState extends State<LoginSupplier> {
       GlobalKey<ScaffoldMessengerState>();
   bool processing = false;
   bool resendVerification = false;
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   void signIn() async {
     try {
@@ -34,10 +37,12 @@ class _LoginSupplierState extends State<LoginSupplier> {
         await AuthRepo.signInWithEmailAndPassword(email, password);
         await AuthRepo.reloadUser();
         var user = AuthRepo.uid;
-
         if (await AuthRepo.checkVerifiedMail()) {
+          final SharedPreferences prefs = await _prefs;
+          prefs.setString('supplierID', user);
+
           await FirebaseFirestore.instance
-              .collection('users')
+              .collection('Suppliers')
               .doc(user)
               .get()
               .then((DocumentSnapshot snapshot) {
@@ -45,6 +50,8 @@ class _LoginSupplierState extends State<LoginSupplier> {
               if (snapshot.get('role') == "supplier") {
                 Navigator.pushReplacementNamed(context, '/Supplier_screen');
               }
+            } else {
+              MyMessageHandler.showSnackBar(_scaffoldKey, 'Please register account');
             }
           });
         } else {
@@ -262,14 +269,20 @@ class _LoginSupplierState extends State<LoginSupplier> {
                                         ),
                                       ),
                                     )
-                                  : SizedBox(),
+                                  : const SizedBox.shrink(),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(10),
                               child: GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                          const ForgotPass()));
+                                },
                                 child: Text(
-                                  'Forgot Password',
+                                  'Forgot Password? (click)',
                                   style: GoogleFonts.nunito(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
@@ -291,7 +304,7 @@ class _LoginSupplierState extends State<LoginSupplier> {
                                   ),
                                   child: Center(
                                     child: processing == true
-                                        ? CircularProgressIndicator()
+                                        ? const CircularProgressIndicator()
                                         : Text(
                                             'Log in',
                                             style: GoogleFonts.nunito(
@@ -317,28 +330,6 @@ class _LoginSupplierState extends State<LoginSupplier> {
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
                                     color: const Color(0xFF303030),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: MaterialButton(
-                                  height: 50,
-                                  color: AppColor.grey,
-                                  onPressed: () {
-                                    Navigator.pushReplacementNamed(
-                                        context, '/Login_cus');
-                                  },
-                                  child: Text(
-                                    'CUSTOMER LOGIN',
-                                    style: GoogleFonts.nunito(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600,
-                                      color: AppColor.white,
-                                    ),
                                   ),
                                 ),
                               ),

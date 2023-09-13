@@ -25,15 +25,15 @@ class _VisitStoreState extends State<VisitStore> {
   @override
   Widget build(BuildContext context) {
     double wMQ = MediaQuery.of(context).size.width;
-    CollectionReference users =
-        FirebaseFirestore.instance.collection('users');
+    CollectionReference suppliers =
+        FirebaseFirestore.instance.collection('Suppliers');
     final Stream<QuerySnapshot> _productsStream = FirebaseFirestore.instance
         .collection('products')
         .where('sid', isEqualTo: widget.supplierID)
         .snapshots();
 
     return FutureBuilder<DocumentSnapshot>(
-      future: users.doc(widget.supplierID).get(),
+      future: suppliers.doc(widget.supplierID).get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasError) {

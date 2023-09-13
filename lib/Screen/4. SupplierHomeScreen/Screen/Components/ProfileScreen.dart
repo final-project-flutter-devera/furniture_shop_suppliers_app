@@ -3,9 +3,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:furniture_shop/Constants/Colors.dart';
+import 'package:furniture_shop/Providers/Auth_reponse.dart';
 import 'package:furniture_shop/Widgets/AppBarButton.dart';
 import 'package:furniture_shop/Widgets/AppBarTitle.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../Widgets/ShowAlertDialog.dart';
 import '../../../13. MyOrderScreen/My_Order_Screen.dart';
 import 'Profile/EditInfo.dart';
@@ -19,14 +21,13 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  CollectionReference users = FirebaseFirestore.instance.collection('users');
+  CollectionReference suppliers =
+      FirebaseFirestore.instance.collection('Suppliers');
   CollectionReference anonymous =
       FirebaseFirestore.instance.collection('anonymous');
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
   List<String> tabName = [
-    'My Order',
-    'Shipping Address',
-    'Payment Method',
-    'My review',
     'Settings',
   ];
   List tabRoute = [
@@ -55,7 +56,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return FutureBuilder<DocumentSnapshot>(
       future: FirebaseAuth.instance.currentUser!.isAnonymous
           ? anonymous.doc(documentId).get()
-          : users.doc(documentId).get(),
+          : suppliers.doc(documentId).get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasError) {
@@ -102,7 +103,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Navigator.pop(context);
                       },
                       tabYes: () async {
-                        await FirebaseAuth.instance.signOut();
+                        await AuthRepo.logOut();
+
+                        final SharedPreferences prefs = await _prefs;
+                        prefs.setString('supplierID', '');
+
                         if (context.mounted) {
                           Navigator.pop(context);
                           Navigator.pushReplacementNamed(
