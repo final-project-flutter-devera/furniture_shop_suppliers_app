@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:furniture_shop/localization/app_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BoardingScreen extends StatefulWidget {
   const BoardingScreen({super.key});
@@ -18,6 +19,7 @@ class BoardingScreen extends StatefulWidget {
 class _BoardingScreenState extends State<BoardingScreen> {
   CollectionReference anonymous =
       FirebaseFirestore.instance.collection('anonymous');
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   Timer? countDownTimer;
   int seconds = 5;
@@ -32,10 +34,22 @@ class _BoardingScreenState extends State<BoardingScreen> {
     'assets/Images/Images/Boarding/boarding5.jpg',
   ];
 
+  String supplierID = '';
+
   @override
   void initState() {
     selectRandomImageBoarding();
     startTimer();
+
+    _prefs.then((SharedPreferences prefs) {
+      return prefs.getString('supplierID') ?? '';
+    }).then((String value) {
+      setState(() {
+        supplierID = value;
+      });
+      print(supplierID);
+    });
+
     super.initState();
   }
 
@@ -58,7 +72,9 @@ class _BoardingScreenState extends State<BoardingScreen> {
       if (seconds < 0) {
         stopTimer();
         if (context.mounted) {
-          Navigator.pushReplacementNamed(context, '/Login_sup');
+          supplierID != ''
+              ? Navigator.pushReplacementNamed(context, '/Supplier_screen')
+              : Navigator.pushReplacementNamed(context, '/Login_sup');
         }
       }
       // print(timer.tick);
@@ -145,9 +161,10 @@ class _BoardingScreenState extends State<BoardingScreen> {
                 child: GestureDetector(
                   onTap: () async {
                     stopTimer();
-
                     if (context.mounted) {
-                      Navigator.pushReplacementNamed(context, '/Login_sup');
+                      supplierID != ''
+                          ? Navigator.pushReplacementNamed(context, '/Supplier_screen')
+                          : Navigator.pushReplacementNamed(context, '/Login_sup');
                     }
                   },
                   child: Container(
