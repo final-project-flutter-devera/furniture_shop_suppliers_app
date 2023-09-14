@@ -28,6 +28,7 @@ class _LoginSupplierState extends State<LoginSupplier> {
   bool resendVerification = false;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
+
   void signIn() async {
     try {
       if (_formKey.currentState!.validate()) {
