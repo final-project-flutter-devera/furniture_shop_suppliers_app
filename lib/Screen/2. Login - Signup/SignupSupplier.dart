@@ -27,6 +27,7 @@ class _SignupSupplierState extends State<SignupSupplier> {
       GlobalKey<ScaffoldMessengerState>();
   bool visiblePassword = false;
   CollectionReference suppliers = FirebaseFirestore.instance.collection('Suppliers');
+  CollectionReference checkUID = FirebaseFirestore.instance.collection('UID');
 
   void signUp() async {
     if (_formKey.currentState!.validate()) {
@@ -52,6 +53,7 @@ class _SignupSupplierState extends State<SignupSupplier> {
             'sid': _uid,
             'role': 'supplier'
           });
+          await checkUID.doc(email).set({'uid': AuthRepo.uid});
           _formKey.currentState!.reset();
           if (context.mounted) {
             Navigator.pushReplacementNamed(context, '/Login_sup');
@@ -64,10 +66,40 @@ class _SignupSupplierState extends State<SignupSupplier> {
               processing = false;
             });
           } else if (e.code == 'email-already-in-use') {
-            MyMessageHandler.showSnackBar(
-                _scaffoldKey, 'The account already exists for that email.');
-            setState(() {
-              processing = false;
+           /* MyMessageHandler.showSnackBar(
+                _scaffoldKey, 'The account already exists for that email.');*/
+            await FirebaseFirestore.instance
+                .collection('Suppliers')
+                .doc(AuthRepo.uid)
+                .get()
+                .then((DocumentSnapshot snapshot) async {
+              if (snapshot.exists) {
+                if (snapshot.get('role') == "supplier") {
+                  await AuthRepo.signInWithEmailAndPassword(email, password);
+                  if (context.mounted) {
+                    Navigator.pushReplacementNamed(
+                        context, '/Supplier_screen');
+                  }
+                }
+              } else {
+                var uID = await FirebaseFirestore.instance
+                    .collection('UID')
+                    .doc(email)
+                    .get();
+                await suppliers.doc(uID['uid']).set({
+                  'name': name,
+                  'email': email,
+                  'phone': '',
+                  'address': '',
+                  'profileimage': '',
+                  'role': 'supplier',
+                  'cid': uID['uid'],
+                });
+                _formKey.currentState!.reset();
+                if (context.mounted) {
+                  Navigator.pushReplacementNamed(context, '/Login_sup');
+                }
+              }
             });
           }
         }
