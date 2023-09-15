@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:furniture_shop/Providers/Auth_reponse.dart';
 import 'package:furniture_shop/Widgets/CheckValidation.dart';
@@ -25,7 +26,9 @@ class _SignupSupplierState extends State<SignupSupplier> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldMessengerState> _scaffoldKey =
       GlobalKey<ScaffoldMessengerState>();
+  bool strongPass = false;
   bool visiblePassword = false;
+  final TextEditingController _pwController = TextEditingController();
   CollectionReference suppliers = FirebaseFirestore.instance.collection('Suppliers');
   CollectionReference checkUID = FirebaseFirestore.instance.collection('UID');
 
@@ -261,6 +264,24 @@ class _SignupSupplierState extends State<SignupSupplier> {
                                           },
                                         )),
                                   ),
+                                  FlutterPwValidator(
+                                      width: MediaQuery.of(context).size.width,
+                                      height: 90,
+                                      minLength: 6,
+                                      uppercaseCharCount: 1,
+                                      specialCharCount: 1,
+                                      onSuccess: () {
+                                        print('Match');
+                                        setState(() {
+                                          strongPass = true;
+                                        });
+                                      },
+                                      onFail: () {
+                                        setState(() {
+                                          strongPass = false;
+                                        });
+                                      },
+                                      controller: _pwController),
                                   const SizedBox(height: 10),
                                   TextFormField(
                                     validator: (value) {
