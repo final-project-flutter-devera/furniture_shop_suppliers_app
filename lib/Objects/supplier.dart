@@ -8,21 +8,23 @@ class Supplier {
   String? profileimage;
   List<String>? follower;
   String? storeCoverImage;
+  String? storeLogo;
   List<Address> storeAddress;
   bool? isDeleted;
-
+  String role;
   Supplier({
     required this.sid,
     required this.name,
     this.email,
     this.phone = '',
-    this.profileimage,
+    this.profileimage = '',
     this.follower = const [],
     this.storeAddress = const [],
-    this.storeCoverImage,
+    this.storeCoverImage = '',
+    this.storeLogo = '',
     this.isDeleted = false,
+    required this.role,
   });
-
   Map<String, dynamic> toJson() {
     return {
       'sid': sid,
@@ -36,7 +38,9 @@ class Supplier {
         (e) => e.toJson(),
       ),
       'storeCoverImage': storeCoverImage,
+      'storeLogo': storeLogo,
       'isDeleted': isDeleted,
+      'role': role,
     };
   }
 
@@ -52,7 +56,9 @@ class Supplier {
       storeAddress: (json['storeAddress'] as List<dynamic>)
           .map((e) => Address.fromJson(e))
           .toList(),
+      storeLogo: json['storeLogo'],
       storeCoverImage: json['storeCoverImage'],
+      role: json['role'],
     );
   }
 }

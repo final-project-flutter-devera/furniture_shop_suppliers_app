@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:furniture_shop/Objects/supplier.dart';
 import 'package:furniture_shop/Providers/Auth_reponse.dart';
 import 'package:furniture_shop/Widgets/CheckValidation.dart';
 import 'package:furniture_shop/Widgets/MyMessageHandler.dart';
@@ -29,7 +30,8 @@ class _SignupSupplierState extends State<SignupSupplier> {
   bool strongPass = false;
   bool visiblePassword = false;
   final TextEditingController _pwController = TextEditingController();
-  CollectionReference suppliers = FirebaseFirestore.instance.collection('Suppliers');
+  CollectionReference suppliers =
+      FirebaseFirestore.instance.collection('Suppliers');
   CollectionReference checkUID = FirebaseFirestore.instance.collection('UID');
 
   void signUp() async {
@@ -43,19 +45,12 @@ class _SignupSupplierState extends State<SignupSupplier> {
               .whenComplete(() => AuthRepo.updateDisplayName(name))
               .whenComplete(() => AuthRepo.sendVerificationEmail());
           _uid = AuthRepo.uid;
-
-          await suppliers.doc(_uid).set({
-            'name': name,
-            'email': email,
-            'phone': '',
-            'address': '',
-            'profileimage': '',
-            'storeLogo': '',
-            'storeCoverImage': '',
-            'storeName': '',
-            'sid': _uid,
-            'role': 'supplier'
-          });
+          await suppliers.doc(_uid).set(Supplier(
+                sid: _uid,
+                name: name,
+                email: email,
+                role: 'supplier',
+              ).toJson());
           await checkUID.doc(email).set({'uid': AuthRepo.uid});
           _formKey.currentState!.reset();
           if (context.mounted) {
@@ -69,7 +64,7 @@ class _SignupSupplierState extends State<SignupSupplier> {
               processing = false;
             });
           } else if (e.code == 'email-already-in-use') {
-           /* MyMessageHandler.showSnackBar(
+            /* MyMessageHandler.showSnackBar(
                 _scaffoldKey, 'The account already exists for that email.');*/
             await FirebaseFirestore.instance
                 .collection('Suppliers')
@@ -80,8 +75,7 @@ class _SignupSupplierState extends State<SignupSupplier> {
                 if (snapshot.get('role') == "supplier") {
                   await AuthRepo.signInWithEmailAndPassword(email, password);
                   if (context.mounted) {
-                    Navigator.pushReplacementNamed(
-                        context, '/Supplier_screen');
+                    Navigator.pushReplacementNamed(context, '/Supplier_screen');
                   }
                 }
               } else {

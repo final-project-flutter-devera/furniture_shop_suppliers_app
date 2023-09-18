@@ -20,7 +20,7 @@ class CustomerProvider extends ChangeNotifier {
     return AuthRepo.uid;
   }
 
-  void addUser(Customer user) async {
+  void addCustomer(Customer user) async {
     await _userRepository.addCustomer(user);
     notifyListeners();
   }
