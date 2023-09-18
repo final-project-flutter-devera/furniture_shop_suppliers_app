@@ -3,7 +3,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:furniture_shop/Providers/Cart_Provider.dart';
+import 'package:furniture_shop/Providers/Favorites_Provider.dart';
+import 'package:furniture_shop/Providers/customer_provider.dart';
+import 'package:furniture_shop/Providers/supplier_provider.dart';
 import 'package:furniture_shop/localization/localization_delegate.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Screen/1. Boarding/BoardingScreen.dart';
 import 'Screen/2. Login - Signup/LoginSupplier.dart';
@@ -36,9 +41,15 @@ void main() async {
     ],
   ).then((value) => const MyApp());
 
-  runApp(
-    const MyApp(),
-  );
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => Cart()),
+      ChangeNotifierProvider(create: (_) => Favorites()),
+      ChangeNotifierProvider(create: (_) => CustomerProvider()),
+      ChangeNotifierProvider(create: (_) => SupplierProvider()),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
