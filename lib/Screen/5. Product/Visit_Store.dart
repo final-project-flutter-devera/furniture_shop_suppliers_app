@@ -22,6 +22,7 @@ class VisitStore extends StatefulWidget {
 class _VisitStoreState extends State<VisitStore> {
   bool following = false;
 
+
   @override
   Widget build(BuildContext context) {
     double wMQ = MediaQuery.of(context).size.width;
@@ -47,6 +48,7 @@ class _VisitStoreState extends State<VisitStore> {
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data =
               snapshot.data!.data() as Map<String, dynamic>;
+          List follower = data['follower'];
           return Scaffold(
             appBar: AppBar(
               elevation: 0,
@@ -120,8 +122,9 @@ class _VisitStoreState extends State<VisitStore> {
                               color: AppColor.white,
                             ),
                           ),
+
                           Text(
-                            '110 followers',
+                            '${follower.length.toString()} followers',
                             style: GoogleFonts.nunito(
                               fontSize: 15,
                               fontWeight: FontWeight.w400,

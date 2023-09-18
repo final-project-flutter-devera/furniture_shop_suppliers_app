@@ -3,8 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:furniture_shop/Providers/Cart_Provider.dart';
-import 'package:furniture_shop/Providers/Favorites_Provider.dart';
 import 'package:furniture_shop/Providers/customer_provider.dart';
 import 'package:furniture_shop/Providers/supplier_provider.dart';
 import 'package:furniture_shop/localization/localization_delegate.dart';
@@ -43,8 +41,6 @@ void main() async {
 
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: (_) => Cart()),
-      ChangeNotifierProvider(create: (_) => Favorites()),
       ChangeNotifierProvider(create: (_) => CustomerProvider()),
       ChangeNotifierProvider(create: (_) => SupplierProvider()),
     ],

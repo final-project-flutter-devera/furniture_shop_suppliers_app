@@ -96,7 +96,10 @@ class _SignupSupplierState extends State<SignupSupplier> {
                   'address': '',
                   'profileimage': '',
                   'role': 'supplier',
-                  'cid': uID['uid'],
+                  'sid': uID['uid'],
+                  'storeLogo': '',
+                  'storeCoverImage': '',
+                  'storeName': '',
                 });
                 _formKey.currentState!.reset();
                 if (context.mounted) {

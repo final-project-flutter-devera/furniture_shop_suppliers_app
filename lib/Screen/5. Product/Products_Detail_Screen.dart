@@ -10,6 +10,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 import '../../Models/Product_model.dart';
+import '../../Providers/Auth_reponse.dart';
+import '../4. SupplierHomeScreen/Screen/Components/Dashboard/SupStore/Edit_Product_Screen.dart';
 import '../4. SupplierHomeScreen/Screen/Components/SearchScreen.dart';
 import 'Full_Screen_View_Images.dart';
 import 'Visit_Store.dart';
@@ -402,6 +404,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             ],
           ),
         ),
+        bottomNavigationBar:
+        AuthRepo.uid == widget.proList['sid'] ?
+        InkWell(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(
+                builder: (context) =>
+                    EditProduct(items: widget.proList,)));
+          },
+          child: const Icon(Icons.edit),
+        ):  const SizedBox.shrink(),
       ),
     );
   }
