@@ -100,6 +100,8 @@ class _SignupSupplierState extends State<SignupSupplier> {
                   'storeLogo': '',
                   'storeCoverImage': '',
                   'storeName': '',
+                  'follower': const [],
+                  'storeAddress': const[],
                 });
                 _formKey.currentState!.reset();
                 if (context.mounted) {
