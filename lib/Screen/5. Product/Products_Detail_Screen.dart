@@ -1,17 +1,12 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:furniture_shop/Constants/Colors.dart';
-import 'package:furniture_shop/Providers/Cart_Provider.dart';
-import 'package:furniture_shop/Providers/Favorites_Provider.dart';
 import 'package:furniture_shop/Widgets/AppBarButton.dart';
-import 'package:furniture_shop/Widgets/MyMessageHandler.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 import '../../Models/Product_model.dart';
@@ -54,17 +49,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         .collection('reviews')
         .snapshots();
     late List<dynamic> imagesList = widget.proList['proImages'];
-    CollectionReference customers =
-        FirebaseFirestore.instance.collection('customers');
+    CollectionReference supplier =
+        FirebaseFirestore.instance.collection('Suppliers');
     final String supplierID = widget.proList['sid'];
-    var existingFavorites = context
-        .read<Favorites>()
-        .getFavoriteItems
-        .firstWhereOrNull(
-            (product) => product.documentID == widget.proList['proID']);
-    var existCart = context.read<Cart>().getItems.firstWhereOrNull(
-        (product) => product.documentID == widget.proList['proID']);
-    final _future = customers.doc(supplierID).get();
+
+    final _future = supplier.doc(supplierID).get();
     return ScaffoldMessenger(
       key: _scaffoldKey,
       child: Scaffold(

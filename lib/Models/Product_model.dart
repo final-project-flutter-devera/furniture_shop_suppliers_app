@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:furniture_shop/Providers/Auth_reponse.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Constants/Colors.dart';
 import '../Screen/4. SupplierHomeScreen/Screen/Components/Dashboard/SupStore/Edit_Product_Screen.dart';
@@ -100,6 +101,7 @@ class _ProductModelState extends State<ProductModel> {
                           ),
                         ],
                       ),
+                      AuthRepo.uid == widget.products['sid'] ?
                       InkWell(
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(
@@ -107,7 +109,7 @@ class _ProductModelState extends State<ProductModel> {
                                   EditProduct(items: widget.products,)));
                         },
                         child: const Icon(Icons.edit),
-                      )
+                      ):  const SizedBox.shrink(),
                     ],
                   ),
                 ],
