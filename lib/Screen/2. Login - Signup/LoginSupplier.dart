@@ -38,31 +38,49 @@ class _LoginSupplierState extends State<LoginSupplier> {
         await AuthRepo.signInWithEmailAndPassword(email, password);
         await AuthRepo.reloadUser();
         var user = AuthRepo.uid;
-        if (await AuthRepo.checkVerifiedMail()) {
-          final SharedPreferences prefs = await _prefs;
-          prefs.setString('supplierID', user);
+        final SharedPreferences prefs = await _prefs;
+        prefs.setString('supplierID', user);
 
-          await FirebaseFirestore.instance
-              .collection('Suppliers')
-              .doc(user)
-              .get()
-              .then((DocumentSnapshot snapshot) {
-            if (snapshot.exists) {
-              if (snapshot.get('role') == "supplier") {
-                Navigator.pushReplacementNamed(context, '/Supplier_screen');
-              }
-            } else {
-              MyMessageHandler.showSnackBar(_scaffoldKey, 'Please register account');
+        await FirebaseFirestore.instance
+            .collection('Suppliers')
+            .doc(user)
+            .get()
+            .then((DocumentSnapshot snapshot) {
+          if (snapshot.exists) {
+            if (snapshot.get('role') == "supplier") {
+              Navigator.pushReplacementNamed(context, '/Supplier_screen');
             }
-          });
-        } else {
-          MyMessageHandler.showSnackBar(
-              _scaffoldKey, 'Please check inbox & verify mail');
-          setState(() {
-            processing = false;
-            resendVerification = true;
-          });
-        }
+          } else {
+            MyMessageHandler.showSnackBar(
+                _scaffoldKey, 'Please register account');
+          }
+        });
+        // if (await AuthRepo.checkVerifiedMail()) {
+        //   final SharedPreferences prefs = await _prefs;
+        //   prefs.setString('supplierID', user);
+
+        //   await FirebaseFirestore.instance
+        //       .collection('Suppliers')
+        //       .doc(user)
+        //       .get()
+        //       .then((DocumentSnapshot snapshot) {
+        //     if (snapshot.exists) {
+        //       if (snapshot.get('role') == "supplier") {
+        //         Navigator.pushReplacementNamed(context, '/Supplier_screen');
+        //       }
+        //     } else {
+        //       MyMessageHandler.showSnackBar(
+        //           _scaffoldKey, 'Please register account');
+        //     }
+        //   });
+        // } else {
+        //   MyMessageHandler.showSnackBar(
+        //       _scaffoldKey, 'Please check inbox & verify mail');
+        //   setState(() {
+        //     processing = false;
+        //     resendVerification = true;
+        //   });
+        // }
       } else {
         MyMessageHandler.showSnackBar(_scaffoldKey, 'Please fill all fields');
       }
@@ -280,7 +298,7 @@ class _LoginSupplierState extends State<LoginSupplier> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                          const ForgotPass()));
+                                              const ForgotPass()));
                                 },
                                 child: Text(
                                   'Forgot Password? (click)',
