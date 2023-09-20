@@ -1,7 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:furniture_shop/Constants/Colors.dart';
-import 'package:furniture_shop/Providers/Auth_reponse.dart';
+import 'package:furniture_shop/Providers/Auth_response.dart';
 import 'package:furniture_shop/Widgets/AppBarButton.dart';
 import 'package:furniture_shop/Widgets/AppBarTitle.dart';
 import 'package:furniture_shop/Widgets/CheckValidation.dart';
@@ -19,9 +18,9 @@ class ForgotPass extends StatefulWidget {
 class _ForgotPassState extends State<ForgotPass> {
   final TextEditingController emailController = TextEditingController();
 
-  GlobalKey<ScaffoldMessengerState> _scaffoldKey =
+  final GlobalKey<ScaffoldMessengerState> _scaffoldKey =
       GlobalKey<ScaffoldMessengerState>();
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +30,8 @@ class _ForgotPassState extends State<ForgotPass> {
         appBar: AppBar(
           backgroundColor: AppColor.white,
           elevation: 0,
-          leading: AppBarBackButtonPop(),
-          title: AppBarTitle(label: 'Resend Password'),
+          leading: const AppBarBackButtonPop(),
+          title: const AppBarTitle(label: 'Resend Password'),
           centerTitle: true,
         ),
         body: Form(
@@ -91,7 +90,7 @@ class _ForgotPassState extends State<ForgotPass> {
                       }
                     },
                     color: AppColor.amber,
-                    child: Text('Submit'),
+                    child: const Text('Submit'),
                   ),
                 ],
               ),

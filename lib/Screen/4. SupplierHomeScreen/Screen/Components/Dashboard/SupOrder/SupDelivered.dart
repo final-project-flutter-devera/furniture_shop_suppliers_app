@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:furniture_shop/Models/Supplier_order_model.dart';
 
-import '../../../../../../Models/Customer_order_model.dart';
 
 class SupDelivered extends StatelessWidget {
   const SupDelivered({super.key});
@@ -21,10 +20,10 @@ class SupDelivered extends StatelessWidget {
         builder: (BuildContext context,
             AsyncSnapshot<QuerySnapshot<Object?>> snapshot) {
           if (snapshot.hasError) {
-            return Scaffold(body: Center(child: Text('Something went wrong')));
+            return const Scaffold(body: Center(child: Text('Something went wrong')));
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           return ListView.builder(

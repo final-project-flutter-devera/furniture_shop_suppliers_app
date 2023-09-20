@@ -6,7 +6,7 @@ class ActionButton extends StatelessWidget {
   final Widget content;
   final Size size;
   final Color color;
-  ActionButton({
+  const ActionButton({
     super.key,
     required this.boxShadow,
     required this.content,

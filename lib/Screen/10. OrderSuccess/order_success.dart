@@ -79,12 +79,12 @@ class OrderSuccess extends StatelessWidget {
             const Spacer(),
             //Buttons
             ActionButton(
-                boxShadow: [],
+                boxShadow: const [],
                 content: Text(
                   "Track your orders",
                   style: AppStyle.text_style_on_black_button,
                 ),
-                size: Size(double.infinity, 60),
+                size: const Size(double.infinity, 60),
                 color: AppColor.black,
                 onPressed: () {}),
             const Padding(padding: EdgeInsets.only(top: 25)),
@@ -93,12 +93,12 @@ class OrderSuccess extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(width: 1, color: AppColor.black)),
               child: ActionButton(
-                  boxShadow: [],
+                  boxShadow: const [],
                   content: Text(
                     "BACK TO HOME",
                     style: AppStyle.text_style_on_white_button,
                   ),
-                  size: Size(double.infinity, 60),
+                  size: const Size(double.infinity, 60),
                   color: AppColor.white,
                   onPressed: () {}),
             ),

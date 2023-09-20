@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../Constants/Colors.dart';
 
 class MyMessageHandler{
-  static void showSnackBar(var _scaffoldKey, String massage) {
-    _scaffoldKey.currentState!.showSnackBar(
+  static void showSnackBar(var scaffoldKey, String massage) {
+    scaffoldKey.currentState!.showSnackBar(
       SnackBar(
         duration: const Duration(seconds: 2),
         backgroundColor: AppColor.amber,

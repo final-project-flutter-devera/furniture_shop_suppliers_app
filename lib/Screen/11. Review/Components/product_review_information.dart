@@ -29,13 +29,13 @@ class ProductReviewInformation extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'Product name',
                   overflow: TextOverflow.ellipsis,
                 ),
                 const Spacer(),
                 Row(children: [
-                  Icon(
+                  const Icon(
                     Icons.star,
                     color: Color(0xFFF2C94C),
                     size: 20,

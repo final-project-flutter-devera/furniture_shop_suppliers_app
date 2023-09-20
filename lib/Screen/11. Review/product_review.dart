@@ -31,9 +31,9 @@ class ProductReview extends StatelessWidget {
           child: SafeArea(
             child: Column(
               children: [
-                ProductReviewInformation(),
+                const ProductReviewInformation(),
                 const Padding(
-                  padding: const EdgeInsets.only(top: 15, bottom: 15),
+                  padding: EdgeInsets.only(top: 15, bottom: 15),
                   child: Divider(
                     thickness: 1,
                     color: AppColor.blur_grey,
@@ -42,8 +42,8 @@ class ProductReview extends StatelessWidget {
                 Expanded(
                   child: ListView.builder(
                     itemCount: 5,
-                    itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
+                    itemBuilder: (context, index) => const Padding(
+                      padding: EdgeInsets.only(bottom: 20),
                       child: CustomerReviewCard(),
                     ),
                   ),

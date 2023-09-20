@@ -23,21 +23,21 @@ class VendorSupplies {
   ///in this case discount will start immediately.
   void scheduleDiscount(double discount, Timestamp start, Timestamp end) {
     this.discount = discount;
-    this.discountStart = start;
-    this.discountEnd = end;
+    discountStart = start;
+    discountEnd = end;
   }
 
   void removeDiscount() {
-    this.discount = 0;
+    discount = 0;
   }
 
   ///Used when vendor resupplies product
   void addStock(int addingValue) {
-    this.stock += addingValue;
+    stock += addingValue;
   }
 
   ///Used when an order with this product is placed
   void removeStock(int removingValue) {
-    this.stock -= removingValue;
+    stock -= removingValue;
   }
 }

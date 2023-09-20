@@ -20,7 +20,7 @@ class _OrderDashboardState extends State<OrderDashboard> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             SupPreparing(),
             SupShipping(),

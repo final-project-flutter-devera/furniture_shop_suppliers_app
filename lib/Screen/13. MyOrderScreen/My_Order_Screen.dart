@@ -23,7 +23,7 @@ class _MyOrderState extends State<MyOrderScreen> {
       length: 4,
       child: Scaffold(
         backgroundColor: AppColor.white,
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             Processing(),
             Shipping(),
@@ -41,12 +41,12 @@ class _MyOrderState extends State<MyOrderScreen> {
               size: 24,
             ),
           ),
-          title: AppBarTitle(label: 'My Order'),
+          title: const AppBarTitle(label: 'My Order'),
           centerTitle: true,
           elevation: 0,
           bottom: TabBar(
             isScrollable: true,
-            labelPadding: EdgeInsets.symmetric(horizontal: 30),
+            labelPadding: const EdgeInsets.symmetric(horizontal: 30),
             labelColor: AppColor.black,
             indicatorColor: AppColor.black,
             unselectedLabelColor: AppColor.disabled_button,

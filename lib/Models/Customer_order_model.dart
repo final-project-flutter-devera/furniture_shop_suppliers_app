@@ -31,7 +31,7 @@ class _CustomerOrderModelState extends State<CustomerOrderModel> {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(15),
-                child: Container(
+                child: SizedBox(
                   height: 100,
                   width: 100,
                   child: Image.network(
@@ -58,8 +58,7 @@ class _CustomerOrderModelState extends State<CustomerOrderModel> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('x' +
-                                  widget.order['orderQuantity'].toString()),
+                              Text('x${widget.order['orderQuantity']}'),
                               Text('\$ ' +
                                   widget.order['orderPrice'].toStringAsFixed(2))
                             ],
@@ -84,7 +83,7 @@ class _CustomerOrderModelState extends State<CustomerOrderModel> {
               child: Container(
                 height: 35,
                 width: 100,
-                decoration: BoxDecoration(color: AppColor.black),
+                decoration: const BoxDecoration(color: AppColor.black),
                 child: Center(
                   child: Text(
                     'Detail',
@@ -117,9 +116,9 @@ class _CustomerOrderModelState extends State<CustomerOrderModel> {
             borderRadius: BorderRadius.circular(10),
             child: Container(
               constraints:
-                  BoxConstraints(minHeight: 0, maxHeight: double.infinity),
+                  const BoxConstraints(minHeight: 0, maxHeight: double.infinity),
               width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: AppColor.grey5,
               ),
               child: Padding(
@@ -221,15 +220,13 @@ class _CustomerOrderModelState extends State<CustomerOrderModel> {
                           ),
                     widget.order['deliveryStatus'] == 'Shipping'
                         ? Text(
-                            'Estimated Pick date:    ' +
-                                DateFormat('dd/MM/yyyy - HH:mm')
+                            'Estimated Pick date:    ${DateFormat('dd/MM/yyyy - HH:mm')
                                     .format(
-                                        widget.order['deliveryDate'].toDate())
-                                    .toString(),
+                                        widget.order['deliveryDate'].toDate())}',
                             style: GoogleFonts.nunito(
                                 fontSize: 16, fontWeight: FontWeight.w400),
                           )
-                        : Text(''),
+                        : const Text(''),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -252,7 +249,7 @@ class _CustomerOrderModelState extends State<CustomerOrderModel> {
                                               unratedColor: AppColor.grey5,
                                               minRating: 1,
                                               itemBuilder: (context, _) {
-                                                return Icon(
+                                                return const Icon(
                                                   Icons.star,
                                                   color: AppColor.amber,
                                                 );
@@ -270,7 +267,7 @@ class _CustomerOrderModelState extends State<CustomerOrderModel> {
                                                 ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: AppColor.black,
                                                     width: 1,
                                                   ),
@@ -279,7 +276,7 @@ class _CustomerOrderModelState extends State<CustomerOrderModel> {
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: AppColor.black,
                                                     width: 2,
                                                   ),
@@ -394,25 +391,25 @@ class _CustomerOrderModelState extends State<CustomerOrderModel> {
                                 height: 30,
                                 color: AppColor.amber,
                                 textColor: AppColor.black,
-                                child: Text('Review'),
+                                child: const Text('Review'),
                               )
-                            : Text(''),
+                            : const Text(''),
                         widget.order['deliveryStatus'] == 'Delivered' &&
                                 widget.order['orderReview'] == true
-                            ? Row(
+                            ? const Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Icon(Icons.task_alt),
                                   Text('Review Added')
                                 ],
                               )
-                            : Text(''),
+                            : const Text(''),
                         widget.order['cancelStatus'] == true ||
                                 widget.order['sid'] ==
                                     FirebaseAuth.instance.currentUser!.uid
-                            ? Text('')
+                            ? const Text('')
                             : widget.order['deliveryStatus'] == 'Delivered'
-                                ? Text('')
+                                ? const Text('')
                                 : MaterialButton(
                                     onPressed: () {
                                       MyAlertDialog.showMyDialog(
@@ -440,7 +437,7 @@ class _CustomerOrderModelState extends State<CustomerOrderModel> {
                                     height: 30,
                                     color: AppColor.red,
                                     textColor: AppColor.white,
-                                    child: Text('Cancel'),
+                                    child: const Text('Cancel'),
                                   )
                       ],
                     )

@@ -32,8 +32,8 @@ class CustomerReviewCard extends StatelessWidget {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 5, bottom: 10),
+            const Padding(
+              padding: EdgeInsets.only(top: 5, bottom: 10),
               child: StarRatings(ratings: 4),
             ),
             Text(
@@ -48,7 +48,7 @@ class CustomerReviewCard extends StatelessWidget {
           ],
         ),
       ),
-      CircleAvatar(
+      const CircleAvatar(
         backgroundColor: Colors.green,
         radius: 20,
       ),

@@ -24,7 +24,7 @@ class _MyNotificationState extends State<MyNotification> {
           ),
           shadowColor: Colors.transparent,
           centerTitle: true,
-          title: Text('Notification'),
+          title: const Text('Notification'),
           titleTextStyle: AppStyle.app_bar_title_text_style,
           foregroundColor: AppColor.black,
         ),

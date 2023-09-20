@@ -47,7 +47,7 @@ class Order {
     this.cancelDate,
   }) {
     //TODO: Calculate totalPrice later
-    if (this.orderDate == null) orderDate = Timestamp.now();
+    orderDate ??= Timestamp.now();
   }
 
   void updateStatus(String status) {
@@ -55,17 +55,19 @@ class Order {
   }
 
   void updateDeliveryDate() {
-    if (this.deliveryDate == null)
-      this.deliveryDate = Timestamp.now();
-    else
+    if (deliveryDate == null) {
+      deliveryDate = Timestamp.now();
+    } else {
       throw 'This order already has a delivery date';
+    }
   }
 
   void cancelOrder() {
-    if (this.cancelDate == null)
-      this.cancelDate = Timestamp.now();
-    else
+    if (cancelDate == null) {
+      cancelDate = Timestamp.now();
+    } else {
       throw 'This order is already canceled';
+    }
   }
 
   Map<String, dynamic> toJson() {

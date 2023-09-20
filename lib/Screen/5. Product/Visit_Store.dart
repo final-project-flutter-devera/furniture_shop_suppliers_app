@@ -28,7 +28,7 @@ class _VisitStoreState extends State<VisitStore> {
     double wMQ = MediaQuery.of(context).size.width;
     CollectionReference suppliers =
         FirebaseFirestore.instance.collection('Suppliers');
-    final Stream<QuerySnapshot> _productsStream = FirebaseFirestore.instance
+    final Stream<QuerySnapshot> productsStream = FirebaseFirestore.instance
         .collection('products')
         .where('sid', isEqualTo: widget.supplierID)
         .snapshots();
@@ -164,44 +164,14 @@ class _VisitStoreState extends State<VisitStore> {
                                 ),
                               ),
                             )
-                          : GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  following = !following;
-                                });
-                              },
-                              child: Container(
-                                  width: 110,
-                                  height: 35,
-                                  margin: const EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    border: Border.all(
-                                        width: 2, color: AppColor.white),
-                                  ),
-                                  child: following == true
-                                      ? Center(
-                                          child: Text(
-                                            'Following',
-                                            style: GoogleFonts.nunito(
-                                                color: AppColor.white),
-                                          ),
-                                        )
-                                      : Center(
-                                          child: Text(
-                                            '+ Follow',
-                                            style: GoogleFonts.nunito(
-                                                color: AppColor.white),
-                                          ),
-                                        )),
-                            ),
+                          : const SizedBox(height: 35,)
                     ],
                   ),
                 ],
               ),
             ),
             body: StreamBuilder<QuerySnapshot>(
-              stream: _productsStream,
+              stream: productsStream,
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasError) {

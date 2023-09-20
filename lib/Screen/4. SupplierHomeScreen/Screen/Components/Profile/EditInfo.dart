@@ -128,7 +128,7 @@ class _EditInfoState extends State<EditInfo> {
           centerTitle: true,
           actions: [
             processing == true
-                ? Center(child: CircularProgressIndicator())
+                ? const Center(child: CircularProgressIndicator())
                 : IconButton(
                     onPressed: () {
                       saveChanges();
@@ -156,7 +156,7 @@ class _EditInfoState extends State<EditInfo> {
                           backgroundImage: NetworkImage(widget.data['profileimage']),
                         ),
                       ),
-                      Icon(Icons.arrow_forward),
+                      const Icon(Icons.arrow_forward),
                       CircleAvatar(
                         backgroundColor: AppColor.black,
                         radius: 57,

@@ -21,10 +21,10 @@ class AnalyticsDashboard extends StatelessWidget {
         builder: (BuildContext context,
             AsyncSnapshot<QuerySnapshot<Object?>> snapshot) {
           if (snapshot.hasError) {
-            return Scaffold(body: Center(child: Text('Something went wrong')));
+            return const Scaffold(body: Center(child: Text('Something went wrong')));
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           num quantitySold = 0;
@@ -93,7 +93,7 @@ class AnalysisMode extends StatelessWidget {
         Container(
           height: 30,
           width: wMQ * 0.9,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: AppColor.black,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(15),
@@ -111,9 +111,9 @@ class AnalysisMode extends StatelessWidget {
           ),
         ),
         Container(
-            constraints: BoxConstraints(minHeight: 150),
+            constraints: const BoxConstraints(minHeight: 150),
             width: wMQ * 0.9,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColor.grey5,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(15),
@@ -124,7 +124,7 @@ class AnalysisMode extends StatelessWidget {
               count: value,
               decimal: decimal,
             )),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
       ],
     );
   }

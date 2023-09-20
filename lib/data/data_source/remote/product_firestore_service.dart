@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_firestore_platform_interface/src/timestamp.dart';
 import 'package:flutter/material.dart';
 import 'package:furniture_shop/Objects/product.dart';
 import 'package:furniture_shop/data/data_source/product_data_service.dart';

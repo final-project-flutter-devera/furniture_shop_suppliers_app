@@ -1,10 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../Constants/Colors.dart';
-import '../Widgets/ShowAlertDialog.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 
 class SupplierOrderModel extends StatelessWidget {
@@ -23,7 +21,7 @@ class SupplierOrderModel extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(15),
-                child: Container(
+                child: SizedBox(
                   height: 100,
                   width: 100,
                   child: Image.network(
@@ -50,7 +48,7 @@ class SupplierOrderModel extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('x' + order['orderQuantity'].toString()),
+                              Text('x${order['orderQuantity']}'),
                               Text('\$ ' +
                                   order['orderPrice'].toStringAsFixed(2))
                             ],
@@ -75,7 +73,7 @@ class SupplierOrderModel extends StatelessWidget {
               child: Container(
                 height: 35,
                 width: 100,
-                decoration: BoxDecoration(color: AppColor.black),
+                decoration: const BoxDecoration(color: AppColor.black),
                 child: Center(
                   child: Text(
                     'Detail',
@@ -108,9 +106,9 @@ class SupplierOrderModel extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             child: Container(
               constraints:
-                  BoxConstraints(minHeight: 0, maxHeight: double.infinity),
+                  const BoxConstraints(minHeight: 0, maxHeight: double.infinity),
               width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: AppColor.grey5,
               ),
               child: Padding(
@@ -229,7 +227,7 @@ class SupplierOrderModel extends StatelessWidget {
                       ],
                     ),
                     order['deliveryStatus'] == 'Delivered'
-                        ? Text('This order has been already delivered')
+                        ? const Text('This order has been already delivered')
                         : Row(
                             children: [
                               Text(
@@ -242,7 +240,7 @@ class SupplierOrderModel extends StatelessWidget {
                                       onPressed: () {
                                         var today = DateTime.now();
                                         DatePicker.showDatePicker(context,
-                                            minTime: today.subtract(Duration(days: 1)) ,
+                                            minTime: today.subtract(const Duration(days: 1)) ,
                                             maxTime: DateTime.now().add(
                                               const Duration(days: 2),
                                             ), onConfirm: (date) async {
@@ -255,7 +253,7 @@ class SupplierOrderModel extends StatelessWidget {
                                           });
                                         });
                                       },
-                                      child: Text('Shipping ?'),
+                                      child: const Text('Shipping ?'),
                                     )
                                   : TextButton(
                                       onPressed: () async {
@@ -266,7 +264,7 @@ class SupplierOrderModel extends StatelessWidget {
                                           'deliveryStatus': 'Delivered',
                                         });
                                       },
-                                      child: Text('Delivered ?'),
+                                      child: const Text('Delivered ?'),
                                     ),
                             ],
                           ),

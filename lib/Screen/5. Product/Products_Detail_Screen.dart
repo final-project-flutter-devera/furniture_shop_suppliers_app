@@ -10,13 +10,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 import '../../Models/Product_model.dart';
-import '../../Providers/Auth_reponse.dart';
+import '../../Providers/Auth_response.dart';
 import '../4. SupplierHomeScreen/Screen/Components/Dashboard/SupStore/Edit_Product_Screen.dart';
 import '../4. SupplierHomeScreen/Screen/Components/SearchScreen.dart';
 import 'Full_Screen_View_Images.dart';
 import 'Visit_Store.dart';
-import 'package:collection/collection.dart';
-import 'package:badges/badges.dart' as badges;
 
 class ProductDetailScreen extends StatefulWidget {
   final dynamic proList;
@@ -40,7 +38,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     var onSale = widget.proList['discount'];
     double wMQ = MediaQuery.of(context).size.width;
     double hMQ = MediaQuery.of(context).size.height;
-    Stream<QuerySnapshot> _productsStream = FirebaseFirestore.instance
+    Stream<QuerySnapshot> productsStream = FirebaseFirestore.instance
         .collection('products')
         .where('mainCategory', isEqualTo: widget.proList['mainCategory'])
         .where('subCategory', isEqualTo: widget.proList['subCategory'])
@@ -55,7 +53,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         FirebaseFirestore.instance.collection('Suppliers');
     final String supplierID = widget.proList['sid'];
 
-    final _future = supplier.doc(supplierID).get();
+    final future = supplier.doc(supplierID).get();
     return ScaffoldMessenger(
       key: _scaffoldKey,
       child: Scaffold(
@@ -258,7 +256,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                     const SizedBox(height: 10),
                     FutureBuilder<DocumentSnapshot>(
-                      future: _future,
+                      future: future,
                       builder: (BuildContext context,
                           AsyncSnapshot<DocumentSnapshot> snapshot) {
                         if (snapshot.hasError) {
@@ -285,7 +283,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                         radius: 35,
                                         backgroundColor: AppColor.white,
                                         backgroundImage: NetworkImage(
-                                          data['profileimage'],
+                                          data['storeLogo'],
                                         ),
                                       ),
                                     ),
@@ -370,7 +368,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       label: '  Similar product  ',
                     ),
                     StreamBuilder<QuerySnapshot>(
-                      stream: _productsStream,
+                      stream: productsStream,
                       builder: (BuildContext context,
                           AsyncSnapshot<QuerySnapshot> snapshot) {
                         if (snapshot.hasError) {

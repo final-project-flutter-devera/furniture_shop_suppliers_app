@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:furniture_shop/Objects/address.dart';
 import 'package:furniture_shop/Objects/supplier.dart';
-import 'package:furniture_shop/Providers/Auth_reponse.dart';
+import 'package:furniture_shop/Providers/Auth_response.dart';
 import 'package:furniture_shop/data/repository/supplier_repository.dart';
 import 'package:furniture_shop/data/repository/supplier_repository_implement.dart';
 

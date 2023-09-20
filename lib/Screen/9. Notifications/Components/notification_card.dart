@@ -10,7 +10,7 @@ class NotificationCard extends StatefulWidget {
   final bool hasImage;
   final bool isAd;
   final bool isViewed;
-  NotificationCard({
+  const NotificationCard({
     super.key,
     required this.hasImage,
     required this.isAd,
@@ -96,7 +96,7 @@ class _NotificationCardState extends State<NotificationCard> {
             color: isViewed ? AppColor.white : AppColor.blur_grey,
           ),
           width: double.infinity,
-          padding: EdgeInsets.only(top: 15, bottom: 10, left: 20, right: 20),
+          padding: const EdgeInsets.only(top: 15, bottom: 10, left: 20, right: 20),
           child: SizedBox(
             height: 70,
             child: Row(
@@ -109,7 +109,7 @@ class _NotificationCardState extends State<NotificationCard> {
                           height: 0,
                         )
                       : Container(
-                          padding: EdgeInsets.only(right: 10),
+                          padding: const EdgeInsets.only(right: 10),
                           width: 70,
                           height: 70,
                           child: ClipRRect(

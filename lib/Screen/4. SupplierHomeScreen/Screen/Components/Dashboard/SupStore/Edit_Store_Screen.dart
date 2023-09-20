@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:furniture_shop/Constants/Colors.dart';
 import 'package:furniture_shop/Widgets/AppBarButton.dart';
@@ -111,7 +110,7 @@ class _EditStoreState extends State<EditStore> {
   Future editStoreData() async {
     await FirebaseFirestore.instance.runTransaction((transaction) async {
       DocumentReference documentReference = FirebaseFirestore.instance
-          .collection('customers')
+          .collection('Suppliers')
           .doc(FirebaseAuth.instance.currentUser!.uid);
       transaction.update(documentReference, {
         'storeName': storeName,
@@ -149,8 +148,8 @@ class _EditStoreState extends State<EditStore> {
         appBar: AppBar(
           backgroundColor: AppColor.white,
           elevation: 0,
-          leading: AppBarBackButtonPop(),
-          title: AppBarTitle(
+          leading: const AppBarBackButtonPop(),
+          title: const AppBarTitle(
             label: 'Edit Store',
           ),
           centerTitle: true,
@@ -197,7 +196,7 @@ class _EditStoreState extends State<EditStore> {
                         ),
                         Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 30,
                             ),
                             ClipRRect(
@@ -219,7 +218,7 @@ class _EditStoreState extends State<EditStore> {
                               ),
                             ),
                             _logoFile == null
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: MaterialButton(
@@ -268,7 +267,7 @@ class _EditStoreState extends State<EditStore> {
                     ),
                   ),
                 ),
-                Divider(
+                const Divider(
                   thickness: 2,
                   color: AppColor.black,
                 ),
@@ -309,7 +308,7 @@ class _EditStoreState extends State<EditStore> {
                         ),
                         Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 30,
                             ),
                             ClipRRect(
@@ -331,7 +330,7 @@ class _EditStoreState extends State<EditStore> {
                               ),
                             ),
                             _coverImageFile == null
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: MaterialButton(
@@ -380,7 +379,7 @@ class _EditStoreState extends State<EditStore> {
                     ),
                   ),
                 ),
-                Divider(
+                const Divider(
                   thickness: 2,
                   color: AppColor.black,
                 ),
@@ -464,7 +463,7 @@ class _EditStoreState extends State<EditStore> {
                                 null;
                               },
                               color: AppColor.black,
-                              child: Center(child: CircularProgressIndicator()))
+                              child: const Center(child: CircularProgressIndicator()))
                           : MaterialButton(
                               minWidth: wMQ * 0.3,
                               height: 50,

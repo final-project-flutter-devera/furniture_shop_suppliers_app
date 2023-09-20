@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:furniture_shop/Providers/Auth_reponse.dart';
+import 'package:furniture_shop/Providers/Auth_response.dart';
 import 'package:furniture_shop/Widgets/CheckValidation.dart';
 import 'package:furniture_shop/Widgets/MyMessageHandler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -54,7 +54,10 @@ class _SignupSupplierState extends State<SignupSupplier> {
             'storeCoverImage': '',
             'storeName': '',
             'sid': _uid,
-            'role': 'supplier'
+            'role': 'supplier',
+            'follower': const [],
+            'storeAddress': const[],
+
           });
           await checkUID.doc(email).set({'uid': AuthRepo.uid});
           _formKey.currentState!.reset();
