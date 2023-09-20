@@ -8,7 +8,6 @@ import 'package:furniture_shop/Providers/customer_provider.dart';
 import 'package:furniture_shop/Providers/supplier_provider.dart';
 import 'package:furniture_shop/Services/Notification_Service.dart';
 import 'package:furniture_shop/localization/localization_delegate.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Screen/1. Boarding/BoardingScreen.dart';

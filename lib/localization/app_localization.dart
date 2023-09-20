@@ -21,10 +21,6 @@ class AppLocalization {
 
   static final Map<String, Map<String, String>> _localizedValues = {
     'en': {
-      //general
-      'label_yes': 'Yes',
-      'label_no': 'No',
-
       ///boarding
       'boarding_title_1': 'MAKE YOUR',
       'boarding_title_2': 'HOME BEAUTIFUL',
@@ -121,7 +117,6 @@ class AppLocalization {
       'payment_method_description': 'You have %variable cards',
       'my_reviews_option': 'My reviews',
       'my_reviews_description': 'Reviews for %variable items',
-      'followed_suppliers_option': 'Followed Suppliers',
       'setting_option': 'Setting',
       'setting_description': 'Notification, Password, FAQ, Contact,...',
 
@@ -137,11 +132,7 @@ class AppLocalization {
 
       ///Shipping Address
       'shipping_address_app_bar_title': "Shipping address",
-      'use_as_shipping_address': 'Use as shipping address',
-      'use_as_store_address': 'Use as store address',
-
-      ///Store address
-      'store_addresses_option': 'Store Address',
+      'use_address': 'Use as the shipping address',
 
       ///Payment Method
       'payment_method_app_bar_title': 'Payment method',
@@ -154,7 +145,6 @@ class AppLocalization {
 
       ///Add Shipping Address
       'add_shipping_address_app_bar_title': 'Add shipping address',
-      'add_store_address_app_bar_title': 'Add store address',
       'label_full_name': 'Recipient name',
       'place_holder_full_name': 'Ex: Bruno Pham',
       'label_address': 'Address',
@@ -163,34 +153,13 @@ class AppLocalization {
       'place_holder_zipcode': '900000',
       'label_country': 'Country',
       'place_holder_country': "Select Country",
-      'label_place': 'Street/Commune',
-      'place_holder_place': 'Lower Manhattan',
       'label_city': 'City',
-      'app_bar_title_edit_shipping_address': 'Edit Shipping Address',
-      'app_bar_title_edit_store_address': 'Edit Store Address',
       'place_holder_city': 'Select City',
       'label_district': 'District',
       'place_holder_district': 'Select District',
       'label_empty_field': "can't be empty",
-      'message_no_address': 'You have no delivery addresses.',
-      'message_no_store_address': 'You have no store addresses.',
       'label_pick_a_location': 'Pick a location on the map',
-      'error_message_empty_address': 'Please fill all your address information',
       'label_save_button': 'SAVE ADDRESS',
-      'mapbox_app_bar_title': 'Pick an address',
-      'title_current_location': 'Your current location',
-      'title_chosen_location': 'Your chosen location',
-      'label_choose_current_location': 'Choose current location',
-      'location_not_chosen': 'You have not choose a location',
-      'label_choose_as_delivery_address': 'Choose as your delivery address',
-      'alert_box_title_delete_address': 'Delete this address?',
-      'alert_box_title_choose_as_delivery_address':
-          'Choose this address as your deliver address?',
-      'label_search_for_address': 'Search for an address...',
-      'alert_box_title_address_not_chosen': 'You have not chosen an address',
-      'hint_text_address_search': 'Search for an address...',
-
-      'label_move_to_current_location': 'Move to your current location',
 
       ///ADD PAYMENT
       'add_payment_app_bar_title': 'Add payment method',
@@ -198,14 +167,6 @@ class AppLocalization {
       // 'card_expiry_date': 'Expiry Date',
       'label_card_holder_name': 'Ex: Bruno Pham',
       'label_cvv': 'CVV',
-
-      ///Following Supplier
-      'label_no_supplier_followed': 'You are not following any stores',
-      'label_no_follower': "You don't have any followers",
-      'label_search_for_supplier': 'Search for a supplier',
-
-      ///Follower
-      'label_follower': 'Followers',
 
       ///Setting
       'label_personal_information': 'Personal Information',
@@ -219,17 +180,8 @@ class AppLocalization {
       'label_help_center': 'Help Center',
       'label_faq': 'FAQ',
       'label_contact': 'Contact us',
-
-      //Store Page
-      'follower': 'Followers',
-      'label_follow': 'Follow',
-      'label_following': 'Following',
     },
     'vi': <String, String>{
-      //general
-      'label_yes': 'Có',
-      'label_no': 'Không',
-
       ///Boarding
       'boarding_title_1': 'TRANG TRÍ',
       'boarding_title_2': 'NGÔI NHÀ CỦA BẠN',
@@ -325,8 +277,6 @@ class AppLocalization {
       'payment_methods_option': 'Phương thức thanh toán',
       'payment_method_description': 'Banh có %variable thẻ',
       'my_reviews_option': 'Nhận xét của tôi',
-      'followed_suppliers_option': 'Cửa hàng đang theo dõi',
-      'followers_option': 'Người theo dõi',
       'my_reviews_description': 'Nhận xét cho %variable vật phẩm',
       'setting_option': 'Tùy chỉnh',
       'setting_description':
@@ -342,11 +292,9 @@ class AppLocalization {
       'order_card_total': 'Tổng giá tiền: ',
       'order_card_detail': 'Chi tiết',
 
-      ///Shipping Address
+      ///Shipping
       'shipping_address_app_bar_title': "Địa chỉ giao hàng",
-      'use_as_shipping_address': 'Sử dụng làm địa chỉ giao hàng',
-      'use_as_store_address': 'Sử dụng làm địa chỉ cửa hàng',
-      'store_address_option': 'Địa chỉ cửa hàng',
+      'use_address': 'Sử dụng làm địa chỉ giao hàng',
 
       ///Payment Method
       'payment_method_app_bar_title': 'Phương thức thanh toán',
@@ -359,7 +307,6 @@ class AppLocalization {
 
       ///Add Shipping Address
       'add_shipping_address_app_bar_title': 'Thêm địa chỉ giao hàng',
-      'add_store_address_app_bar_title': 'Thêm địa chỉ cửa hàng',
       'label_full_name': 'Tên người nhận',
       'place_holder_full_name': 'VD: Phạm Văn A',
       'label_address': 'Địa Chỉ',
@@ -369,32 +316,12 @@ class AppLocalization {
       'label_country': 'Quốc gia',
       'place_holder_country': "Chọn quốc gia",
       'label_city': 'Thành phố',
-      'app_bar_title_edit_shipping_address': 'Chỉnh sửa địa chỉ giao hàng',
-      'app_bar_title_edit_store_address': 'Chỉnh sửa địa chỉ cửa hàng',
-      'place_holder_place': 'Bình Thạnh',
-      'label_place': 'Xã/Phường/Thị Trấn',
       'place_holder_city': 'Chọn thành phố',
       'label_district': 'Quận/Huyện',
       'place_holder_district': 'Chọn quận/huyện',
       'label_empty_field': "không thể trống",
       'label_pick_a_location': 'Chọn vị trí trên bản đồ',
-      'message_no_address': 'Bạn không có địa chỉ giao hàng.',
-      'message_no_store_address': 'Bạn không có địa chỉ cửa hàng.',
-      'error_message_empty_address': 'Vui lòng điền thông tin địa chỉ',
       'label_save_button': 'LƯU ĐỊA CHỈ',
-      'mapbox_app_bar_title': 'Chọn một địa chỉ',
-      'title_current_location': 'Vị trí hiện tại',
-      'title_chosen_location': 'Vị trí đã chọn',
-      'label_choose_current_location': 'Chọn vị trí hiện tại',
-      'location_not_chosen': 'Bạn chưa chọn địa chỉ',
-      'label_choose_as_delivery_address': 'Chọn làm địa chỉ giao hàng',
-      'alert_box_title_delete_address': 'Xóa địa chỉ này?',
-      'alert_box_title_choose_as_delivery_address':
-          'Chọn địa chỉ này làm địa chỉ giao hàng?',
-      'title_move_to_current_location': 'Di chuyển đến vị trí hiện tại của bạn',
-      'label_search_for_address': 'Tìm một địa chỉ...',
-      'alert_box_title_address_not_chosen': 'Bạn chưa chọn địa chỉ giao hàng',
-      'hint_text_address_search': 'Tìm kiếm một địa chỉ...',
 
       ///ADD PAYMENT
       'add_payment_app_bar_title': 'Thêm phương thức thanh toán',
@@ -402,15 +329,6 @@ class AppLocalization {
       // 'card_expiry_date': 'Expiry Date',
       'label_card_holder_name': 'VD: Phạm Văn A',
       'label_cvv': 'CVV',
-
-      ///Following Supplier
-      'label_no_supplier_followed': 'Bạn chưa theo dõi người bán nào',
-      'label_no_follower': 'Bạn chưa có người theo dõi',
-      'label_search_for_supplier': 'Tìm một người bán',
-      'label_search_for_follower': 'Tìm một người đang theo dõi',
-
-      ///Follower
-      'label_follower': 'Người theo dõi',
 
       ///Setting
       'label_personal_information': 'Thông tin cá nhân',
@@ -424,11 +342,6 @@ class AppLocalization {
       'label_help_center': 'Trung tâm trợ giúp',
       'label_faq': 'Câu hỏi thường gặp',
       'label_contact': 'Liên hệ chúng tôi',
-
-      //Store Page
-      'follower': 'Người theo dõi',
-      'label_follow': 'Theo dõi',
-      'label_following': 'Đang theo dõi',
     },
   };
 }
