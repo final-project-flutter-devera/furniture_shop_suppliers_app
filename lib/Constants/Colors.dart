@@ -18,4 +18,9 @@ class AppColor {
   static const red = Colors.red;
   static const blue = Colors.blue;
   static const green = Colors.green;
+  static Color baseShimmerColor = Colors.grey.shade500;
+
+  static Color highlightShimmerColor = Colors.grey.shade700;
+
+  static Color widgetShimmerColor = Colors.grey.shade600;
 }
