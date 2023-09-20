@@ -294,7 +294,8 @@ class _EditProductState extends State<EditProduct> {
                           borderRadius: BorderRadius.circular(15),
                           child: MaterialButton(
                             onPressed: () {
-                              saveChanges();
+                              // saveChanges();
+                              MyMessageHandler.showSnackBar(_scaffoldKey, 'Feature still developing');
                             },
                             color: AppColor.black,
                             height: 41,

@@ -10,14 +10,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../Widgets/ShowAlertDialog.dart';
 import 'Dashboard/DashboardAnalytics.dart';
 import 'Dashboard/DashboardBalance.dart';
-import 'Dashboard/DashboardStorage.dart';
+import 'Dashboard/DashboardProduct.dart';
 import 'ProfileScreen.dart';
 
 List<String> label = [
   'Store',
   'Orders',
   'Profile',
-  'Storage',
+  'Products',
   'Balance',
   'analytics',
 ];
@@ -34,7 +34,7 @@ List<Widget> pages = [
   VisitStore(supplierID: FirebaseAuth.instance.currentUser!.uid),
   const OrderDashboard(),
   const ProfileScreen(),
-  const StorageDashboard(),
+  const ManageProductDashboard(),
   const BalanceDashboard(),
   const AnalyticsDashboard(),
 ];
