@@ -52,7 +52,7 @@ class AnalyticsDashboard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   AnalysisMode(
-                    label: 'Products',
+                    label: 'Orders',
                     value: snapshot.data!.docs.length,
                     decimal: 0,
                   ),
