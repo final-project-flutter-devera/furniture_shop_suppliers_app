@@ -8,7 +8,7 @@ import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 class SupplierOrderModel extends StatelessWidget {
   final dynamic order;
 
-  const SupplierOrderModel({super.key, this.order});
+  SupplierOrderModel({super.key, this.order});
 
   @override
   Widget build(BuildContext context) {

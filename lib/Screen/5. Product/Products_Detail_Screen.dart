@@ -205,7 +205,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                               fontWeight: FontWeight.w400,
                                             )
                                           : GoogleFonts.nunito(
-                                              fontSize: 30,
+                                              fontSize: 31 ,
                                               fontWeight: FontWeight.w700,
                                             ),
                                     ),
