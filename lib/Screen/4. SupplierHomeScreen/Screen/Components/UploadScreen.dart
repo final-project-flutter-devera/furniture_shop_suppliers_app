@@ -110,7 +110,7 @@ class _UploadScreenState extends State<UploadScreen> {
         'proID': proID,
         'mainCategory': mainValue,
         'subCategory': subValue,
-        'price': price,
+        'price': price ,
         'inStock': quantity,
         'proName': proName,
         'prodesc': proDesc,

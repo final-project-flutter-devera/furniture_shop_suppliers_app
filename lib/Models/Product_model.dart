@@ -76,7 +76,7 @@ class _ProductModelState extends State<ProductModel> {
                                   ? Text(
                                 ((1 - (onSale / 100)) *
                                     widget.products['price'])
-                                    .toString(),
+                                    .toStringAsFixed(2),
                                 style: GoogleFonts.nunito(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
