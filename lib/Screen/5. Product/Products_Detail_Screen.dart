@@ -185,7 +185,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                         ? Text(
                                             ((1 - (onSale / 100)) *
                                                     widget.proList['price'])
-                                                .toString(),
+                                                .toStringAsFixed(2),
                                             style: GoogleFonts.nunito(
                                               fontSize: 30,
                                               fontWeight: FontWeight.w700,
